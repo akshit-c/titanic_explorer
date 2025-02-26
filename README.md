@@ -120,18 +120,19 @@ cd app
 python main.py
 ```
 
-## Deploying to Streamlit Cloud
+## Deployment
 
-You can deploy the frontend of this application to [Streamlit Cloud](https://streamlit.io/cloud) for free. This allows others to access your application without having to run it locally.
+### Streamlit Cloud Deployment
 
-### Prerequisites
+The TailorTalk application can be deployed to Streamlit Cloud for easy access without requiring users to set up the environment locally.
 
-1. A GitHub account
-2. Your code pushed to a GitHub repository
-3. A Streamlit Cloud account (free)
-4. A publicly accessible backend API (optional, see notes below)
+#### Prerequisites
 
-### Deployment Steps
+- A GitHub account
+- Your code pushed to a GitHub repository
+- A Streamlit Cloud account (sign up at https://streamlit.io/cloud)
+
+#### Deployment Steps
 
 1. Push your code to GitHub if you haven't already:
    ```bash
@@ -140,37 +141,32 @@ You can deploy the frontend of this application to [Streamlit Cloud](https://str
    git push
    ```
 
-2. Sign up for a free account at [Streamlit Cloud](https://streamlit.io/cloud)
+2. Sign up for Streamlit Cloud and log in.
 
-3. Click on "New app" and connect your GitHub repository
+3. Click on "New app" and select your GitHub repository.
 
-4. Configure the deployment:
-   - **Repository**: Select your GitHub repository
-   - **Branch**: `main` (or your preferred branch)
-   - **Main file path**: `streamlit_app.py`
-   - **Advanced settings**:
-     - Add the following environment variable:
-       - `BACKEND_URL`: URL of your deployed backend API (e.g., `https://your-backend-api.com`)
+4. Configure the app:
+   - Set the main file path to `streamlit_app.py`
+   - No need to set environment variables for the standalone version
+   - Choose the branch you want to deploy (usually `main`)
 
-5. Click "Deploy"
+5. Click "Deploy" and wait for the build to complete.
 
-### Notes on Backend Deployment
+6. Your app will be available at a URL like `https://yourusername-tailortalk-streamlit_app-xxxx.streamlit.app`
 
-For the complete application to work in the cloud, you'll need to:
+#### Notes
 
-1. Deploy the backend API to a cloud provider (e.g., Heroku, Render, Railway, etc.)
-2. Set the `BACKEND_URL` environment variable in Streamlit Cloud to point to your deployed backend
-3. Ensure your backend API allows CORS requests from your Streamlit Cloud app's domain
+- The standalone version doesn't require a backend API, as it uses mock data and responses.
+- For a full-featured version with a real backend, you would need to:
+  1. Deploy the backend API to a service like Render, Railway, or Heroku
+  2. Set the `BACKEND_URL` environment variable in Streamlit Cloud to point to your deployed backend
 
-If you don't have a deployed backend, the frontend will still work but will attempt to connect to `localhost:8000`, which won't be accessible from the cloud.
+### Local Testing of Streamlit Cloud Version
 
-### Running the Frontend Only
+To test the Streamlit Cloud version locally:
 
-If you don't want to deploy the backend, you can modify the frontend to work without it by:
-
-1. Mocking API responses
-2. Using static data
-3. Implementing simplified functionality directly in the frontend
-
-This approach is useful for demonstration purposes but won't provide the full functionality of the application.
+```bash
+pip install -r requirements-streamlit.txt
+python streamlit_app.py
+```
 

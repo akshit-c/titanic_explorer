@@ -1,18 +1,18 @@
 """
-Streamlit Cloud Entry Point
+Streamlit App Entry Point for Deployment
 
 This file serves as the entry point for Streamlit Cloud deployment.
-It simply imports and runs the main frontend app.
+It imports and runs the standalone version of the app.
 """
 
 import os
 import sys
 
 # Add the frontend directory to the path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'frontend')))
+sys.path.append(os.path.join(os.path.dirname(__file__), "frontend"))
 
-# Import and run the main app
-from app import main
+# Import and run the standalone app
+from standalone import main
 
 if __name__ == "__main__":
     main() 
