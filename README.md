@@ -27,7 +27,7 @@ The application consists of two main components:
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository
  
 
 2. Create and activate a virtual environment:
@@ -36,33 +36,7 @@ The application consists of two main components:
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Create a `.env` file in the root directory with the following content:
-   ```
-   # API Settings
-   API_HOST=0.0.0.0
-   API_PORT=8000
-   DEBUG=True
-
-   # Database Settings
-   DATABASE_URL=sqlite:///./titanic.db
-
-   # LLM Settings
-   OPENAI_API_KEY=your_openai_api_key_here
-   OPENROUTER_API_KEY=your_openrouter_api_key_here
-   USE_OPENROUTER=True
-   LLM_MODEL=qwen/qwen-vl-plus:free
-
-   # Frontend Settings
-   STREAMLIT_SERVER_PORT=8502
-   BACKEND_API_URL=http://localhost:8000
-   ```
-
-   Replace `your_openrouter_api_key_here` with your actual OpenRouter API key.
+3. Install dependencies
 
 ### Running the Application
 
