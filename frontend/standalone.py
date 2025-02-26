@@ -364,6 +364,10 @@ Survival was strongly influenced by factors such as:
 
 def process_query(query_text):
     """Process a query and return a response with visualization."""
+    # Ensure titanic_data is initialized
+    if 'titanic_data' not in st.session_state:
+        st.session_state.titanic_data = load_titanic_data()
+        
     # Generate a text response
     text_content = generate_response(query_text)
     
@@ -407,6 +411,10 @@ def main():
     # Display chat history
     chat_container = st.container()
     with chat_container:
+        # Ensure messages are initialized in session state
+        if 'messages' not in st.session_state:
+            st.session_state.messages = []
+            
         for message in st.session_state.messages:
             display_message(message['text'], message['is_user'])
             if 'visualization' in message and message['visualization'] is not None:
@@ -425,6 +433,10 @@ def main():
         send_button = st.form_submit_button("Send")
     
     if send_button and query_text:
+        # Ensure messages are initialized
+        if 'messages' not in st.session_state:
+            st.session_state.messages = []
+            
         # Add user message to chat
         st.session_state.messages.append({
             'text': query_text,
