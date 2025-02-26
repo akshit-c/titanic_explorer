@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-"""
-Run Script for TailorTalk
 
-This script runs the TailorTalk application.
-"""
 
 import os
 import sys
@@ -13,7 +8,6 @@ import signal
 import threading
 import socket
 
-# Add the parent directory to the path so we can import from app
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from app.core.config import settings
@@ -37,7 +31,7 @@ def kill_process_on_port(port, host='localhost'):
                 # Kill the process
                 os.system(f"kill -9 {pid}")
                 print(f"Killed process {pid} using port {port}")
-                time.sleep(1)  # Give it a moment to release the port
+                time.sleep(1)  
                 return True
     except Exception as e:
         print(f"Error killing process on port {port}: {e}")
