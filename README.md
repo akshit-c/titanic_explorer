@@ -120,3 +120,57 @@ cd app
 python main.py
 ```
 
+## Deploying to Streamlit Cloud
+
+You can deploy the frontend of this application to [Streamlit Cloud](https://streamlit.io/cloud) for free. This allows others to access your application without having to run it locally.
+
+### Prerequisites
+
+1. A GitHub account
+2. Your code pushed to a GitHub repository
+3. A Streamlit Cloud account (free)
+4. A publicly accessible backend API (optional, see notes below)
+
+### Deployment Steps
+
+1. Push your code to GitHub if you haven't already:
+   ```bash
+   git add .
+   git commit -m "Prepare for Streamlit Cloud deployment"
+   git push
+   ```
+
+2. Sign up for a free account at [Streamlit Cloud](https://streamlit.io/cloud)
+
+3. Click on "New app" and connect your GitHub repository
+
+4. Configure the deployment:
+   - **Repository**: Select your GitHub repository
+   - **Branch**: `main` (or your preferred branch)
+   - **Main file path**: `streamlit_app.py`
+   - **Advanced settings**:
+     - Add the following environment variable:
+       - `BACKEND_URL`: URL of your deployed backend API (e.g., `https://your-backend-api.com`)
+
+5. Click "Deploy"
+
+### Notes on Backend Deployment
+
+For the complete application to work in the cloud, you'll need to:
+
+1. Deploy the backend API to a cloud provider (e.g., Heroku, Render, Railway, etc.)
+2. Set the `BACKEND_URL` environment variable in Streamlit Cloud to point to your deployed backend
+3. Ensure your backend API allows CORS requests from your Streamlit Cloud app's domain
+
+If you don't have a deployed backend, the frontend will still work but will attempt to connect to `localhost:8000`, which won't be accessible from the cloud.
+
+### Running the Frontend Only
+
+If you don't want to deploy the backend, you can modify the frontend to work without it by:
+
+1. Mocking API responses
+2. Using static data
+3. Implementing simplified functionality directly in the frontend
+
+This approach is useful for demonstration purposes but won't provide the full functionality of the application.
+

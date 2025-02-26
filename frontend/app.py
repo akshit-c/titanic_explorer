@@ -19,7 +19,8 @@ st.set_page_config(
 )
 
 # API URL
-API_URL = f"http://{settings.API_HOST}:{settings.API_PORT}/api"
+BACKEND_URL = os.environ.get("BACKEND_URL", f"http://localhost:{settings.API_PORT}")
+API_URL = f"{BACKEND_URL}/api"
 
 # Custom CSS for Gemini-like appearance
 st.markdown("""
